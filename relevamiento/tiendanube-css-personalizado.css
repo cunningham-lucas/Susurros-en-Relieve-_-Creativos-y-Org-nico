@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Alike&family=Passion+One:wght@400;700&display=swap');
+
+/* [MARCA] — tokens de la réplica (whispering-pages-tokens.css) y medidas de datos-crudos-twp.md (HOME desktop) */
+
+/* Títulos de sección: Passion One */
+.heading-block {
+  font-family: 'Passion One', 'Arial Black', sans-serif;
+  font-weight: 400;
+}
+
+/* ---------- Escala: contenido a 1200 px centrado, 16 px de margen en móvil ---------- */
+#ns-section-image-with-text_1793286425148 .container,
+#ns-section-image-with-text_1793286484908 .container,
+#ns-section-image-with-text_1793286513036 .container,
+#ns-section-image-with-text_1793286524509 .container,
+#ns-section-image-with-text_1793286536057 .container,
+#ns-section-icon-text_1793286412431 .container,
+#ns-section-product-list_1793286406080 .container,
+#ns-section-testimonials_1793286507003 .container,
+#ns-section-faq_1793286542158 .container {
+  max-width: 1232px; /* 1200 de contenido + 16 + 16 de padding */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+/* Pie y newsletter: mismo ancho de 1200 */
+.footer-content .footer-main-info,
+.footer-content .footer-secondary-info {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#ns-section-newsletter_1793283339424 .container { max-width: 1232px; }
+/* La banda de producto va a ancho completo (fondo verde): se limita su grilla */
+#ns-section-image-with-text_1793286425148 .media-grid {
+  max-width: 1232px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+/* Imagen + texto: 2 columnas iguales con 32 px entre medio */
+@media (min-width: 768px) {
+  .section-image-with-text:not(#ns-section-image-with-text_1793286712196) .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    column-gap: 32px;
+    align-items: center;
+  }
+}
+/* Tamaños máximos de imagen (no pasan estas medidas aunque la ventana sea más ancha) */
+.section-image-with-text:not(#ns-section-image-with-text_1793286712196) .media-visual {
+  position: relative;
+  width: 100%;
+  justify-self: center;
+  overflow: hidden;
+}
+.section-image-with-text:not(#ns-section-image-with-text_1793286712196) .media-visual img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+.section-image-with-text:not(#ns-section-image-with-text_1793286712196) .media-visual .placeholder {
+  position: absolute;
+  inset: 0;
+}
+#ns-section-image-with-text_1793286425148 .media-visual { max-width: 585px; aspect-ratio: 585 / 500; } /* Banda */
+#ns-section-image-with-text_1793286484908 .media-visual { max-width: 585px; aspect-ratio: 585 / 379; } /* Legado */
+#ns-section-image-with-text_1793286524509 .media-visual { max-width: 585px; aspect-ratio: 585 / 379; } /* Regalo */
+#ns-section-image-with-text_1793286513036 .media-visual { max-width: 530px; aspect-ratio: 1 / 1; }     /* Cómo se usa */
+#ns-section-image-with-text_1793286536057 .media-visual { max-width: 550px; aspect-ratio: 550 / 493; } /* Comparativa */
+
+/* En móvil el texto arranca en el mismo margen de 16 px que la imagen */
+@media (max-width: 767px) {
+  .section-image-with-text:not(#ns-section-image-with-text_1793286712196) .group-block {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Hero: se deja como está a 1440; en pantallas más anchas no se estira */
+@media (min-width: 1441px) {
+  #ns-section-image-with-text_1793286712196 .media-grid {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ---------- Hero ---------- */
+#ns-section-image-with-text_1793286712196 .heading-block {
+  font-family: 'Alike', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+}
+#ns-section-image-with-text_1793286712196 .btn,
+#ns-section-image-with-text_1793286712196 .btn-primary {
+  font-family: 'Alike', Georgia, 'Times New Roman', serif;
+  background-color: #00A356;
+  border-color: #00A356;
+  color: #FFFFFF;
+  border-radius: 6px;
+  width: 400px;
+  max-width: 100%;
+  min-height: 62px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+#ns-section-image-with-text_1793286712196 .group-content > .text-block:first-child { font-size: 14px; }
+#ns-section-image-with-text_1793286712196 .group-content > .btn + .text-block p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+#ns-section-image-with-text_1793286712196 .group-content > .btn + .text-block p::before {
+  content: '\2713';
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #00A356;
+  color: #FFFFFF;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  #ns-section-image-with-text_1793286712196 .btn, #ns-section-image-with-text_1793286712196 .btn-primary { width: 100%; }
+}
+
+/* ---------- Microcopy debajo de los botones ---------- */
+.section-image-with-text:not(#ns-section-image-with-text_1793286712196) .group-content > .btn + .text-block {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* ---------- Banda de producto ---------- */
+#ns-section-image-with-text_1793286425148 .heading-block {
+  font-size: 56px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+#ns-section-image-with-text_1793286425148 .heading-block + .text-block p:first-child {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+@media (max-width: 767px) {
+  #ns-section-image-with-text_1793286425148 .heading-block { font-size: 40px; }
+}
+
+/* ---------- Productos destacados: 2 tarjetas con imagen de 530 × 530 ---------- */
+@media (min-width: 768px) {
+  #ns-section-product-list_1793286406080 .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 530px)) !important;
+    justify-content: center;
+    gap: 40px;
+  }
+  #ns-section-product-list_1793286406080 .product-item {
+    width: 100% !important;
+    max-width: 530px;
+  }
+}
+#ns-section-product-list_1793286406080 .product-item-image-container {
+  width: 100%;
+  max-width: 530px;
+  aspect-ratio: 1 / 1;
+}
+
+/* ---------- Reseñas, sección 2: carrusel de 3 tarjetas de 360 px ---------- */
+/* El carrusel calcula los anchos con 16 px de separación: con 1154 px cada slide mide 374
+   y la tarjeta de 360 queda centrada, así que la separación visible es de 30 px. */
+#ns-section-testimonials_1793286350819 .testimonial-group {
+  max-width: 1154px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Tarjetas de reseña (secciones 2 y 7), como TWP ---------- */
+#ns-section-testimonials_1793286350819 .testimonial,
+#ns-section-testimonials_1793286507003 .testimonial {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  text-align: left !important;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  background: #FAFAFA;
+  color: #242424;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 0 18px;
+  gap: 12px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#ns-section-testimonials_1793286350819 .testimonial-header, #ns-section-testimonials_1793286350819 .testimonial-meta,
+#ns-section-testimonials_1793286507003 .testimonial-header, #ns-section-testimonials_1793286507003 .testimonial-meta { display: contents !important; }
+/* Foto pegada a los bordes, esquinas redondeadas arriba */
+#ns-section-testimonials_1793286350819 .testimonial::before,
+#ns-section-testimonials_1793286507003 .testimonial::before {
+  content: '[Foto del cliente]';
+  order: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #E7EFEC;
+  color: #4D4D4D;
+  font-size: 13px;
+  border-radius: 10px 10px 0 0;
+}
+/* Estrellas naranjas de 20 px */
+#ns-section-testimonials_1793286350819 .testimonial-rating,
+#ns-section-testimonials_1793286507003 .testimonial-rating {
+  order: 1;
+  display: flex;
+  gap: 2px;
+  padding: 0 18px;
+  color: #F7A21B;
+  fill: #F7A21B;
+}
+#ns-section-testimonials_1793286350819 .testimonial-rating-point,
+#ns-section-testimonials_1793286507003 .testimonial-rating-point {
+  width: 20px;
+  height: 20px;
+  fill: #F7A21B;
+  color: #F7A21B;
+}
+/* Reseña entre comillas, 16/28.8, #575757 */
+#ns-section-testimonials_1793286350819 .testimonial-title,
+#ns-section-testimonials_1793286507003 .testimonial-title {
+  order: 2;
+  padding: 0 18px;
+  font-size: 16px;
+  line-height: 28.8px;
+  font-weight: 400;
+  color: #575757;
+}
+#ns-section-testimonials_1793286350819 .testimonial-title::before,
+#ns-section-testimonials_1793286507003 .testimonial-title::before { content: '\201C'; }
+#ns-section-testimonials_1793286350819 .testimonial-title::after,
+#ns-section-testimonials_1793286507003 .testimonial-title::after { content: '\201D'; }
+/* Firma "[Nombre] - Compra verificada" en 13 px con escudo con check */
+#ns-section-testimonials_1793286350819 .testimonial-name,
+#ns-section-testimonials_1793286507003 .testimonial-name {
+  order: 3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 18px;
+  margin: 0;
+  font-size: 13px;
+  color: #4F4F4F;
+}
+#ns-section-testimonials_1793286350819 .testimonial-name::before,
+#ns-section-testimonials_1793286507003 .testimonial-name::before {
+  content: '';
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300A356' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ---------- Grilla de reseñas (sección 7): 4 tarjetas en una fila dentro de los 1200 px ---------- */
+#ns-section-testimonials_1793286507003 .text-block {
+  font-family: 'Passion One', 'Arial Black', sans-serif;
+  font-size: 55px;
+  line-height: 1.1;
+  text-align: center;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  #ns-section-testimonials_1793286507003 .flex-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    justify-items: stretch !important;
+  }
+  #ns-section-testimonials_1793286507003 .flex-grid > * { width: auto !important; max-width: none !important; flex: none !important; }
+}
+/* En la grilla la tarjeta ocupa toda la columna (el margin auto la achicaba) */
+#ns-section-testimonials_1793286507003 .flex-grid > .testimonial {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+/* Grilla en celulares: 2 columnas */
+@media (max-width: 767px) {
+  #ns-section-testimonials_1793286507003 .flex-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    justify-items: stretch !important;
+  }
+  #ns-section-testimonials_1793286507003 .flex-grid > * { width: auto !important; max-width: none !important; flex: none !important; }
+  #ns-section-testimonials_1793286507003 .testimonial { padding-bottom: 12px; gap: 8px; }
+  #ns-section-testimonials_1793286507003 .testimonial-rating,
+  #ns-section-testimonials_1793286507003 .testimonial-title,
+  #ns-section-testimonials_1793286507003 .testimonial-name { padding: 0 10px; }
+  #ns-section-testimonials_1793286507003 .testimonial-rating-point { width: 14px; height: 14px; }
+  #ns-section-testimonials_1793286507003 .testimonial-title { font-size: 14px; line-height: 25.2px; }
+  #ns-section-testimonials_1793286507003 .text-block { font-size: 44px; }
+}
+
+/* ---------- Preguntas: acordeón de 820 px centrado ---------- */
+#ns-section-faq_1793286542158 .heading-block { text-align: center; width: 100%; }
+#ns-section-faq_1793286542158 .faq-group {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#ns-section-faq_1793286542158 .faq-list { padding-left: 0 !important; padding-right: 0 !important; width: 100%; }
+
+/* ---------- Ajustes en celulares: H1 del hero a 35 px y barra de anuncios en dos líneas ---------- */
+@media (max-width: 767px) {
+  #ns-section-image-with-text_1793286712196 .heading-block { font-size: 35px; line-height: 1.2; }
+  .navigation-bar-list { overflow: visible; }
+  .navigation-bar-group,
+  .navigation-bar-block,
+  .navigation-bar-item { white-space: normal; text-align: center; justify-content: center; }
+}
+
+/* ---------- Divisores ondulados (imagen de 1425 × 47; en celulares 13 px de alto) ---------- */
+#ns-section-banners_1793286418787 .banner-image-container,
+#ns-section-banners_1793286576676 .banner-image-container,
+#ns-section-banners_1793286518409 .banner-image-container,
+#ns-section-banners_1793286529885 .banner-image-container {
+  height: 47px !important;
+  padding: 0 !important;
+  aspect-ratio: auto !important;
+}
+#ns-section-banners_1793286418787 .banner-image-container img,
+#ns-section-banners_1793286576676 .banner-image-container img,
+#ns-section-banners_1793286518409 .banner-image-container img,
+#ns-section-banners_1793286529885 .banner-image-container img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover;
+}
+@media (max-width: 767px) {
+  #ns-section-banners_1793286418787 .banner-image-container,
+  #ns-section-banners_1793286576676 .banner-image-container,
+  #ns-section-banners_1793286518409 .banner-image-container,
+  #ns-section-banners_1793286529885 .banner-image-container { height: 13px !important; }
+}
+
+/* ---------- Hero 585 x 585 ---------- */
+@media (min-width: 768px) {
+#ns-section-image-with-text_1793286712196 .media-grid { max-width: 1232px !important; margin: 0 auto; padding: 0 16px; box-sizing: border-box; grid-template-columns: repeat(2, minmax(0, 585px)) !important; column-gap: 30px; justify-content: center; align-items: center; }
+}
+#ns-section-image-with-text_1793286712196 .media-visual { position: relative; width: 100%; max-width: 585px; height: auto !important; aspect-ratio: 1 / 1; justify-self: center; overflow: hidden; }
+#ns-section-image-with-text_1793286712196 .media-visual img { width: 100% !important; height: 100% !important; object-fit: cover; }
+/* ---------- 4 beneficios apilados en celulares ---------- */
+@media (max-width: 767px) {
+#ns-section-image-with-text_1793286712196 .media-visual { max-width: none; }
+#ns-section-icon-text_1793286412431 .swiper-wrapper { display: flex !important; flex-direction: column; gap: 32px; transform: none !important; }
+#ns-section-icon-text_1793286412431 .swiper-slide { width: 100% !important; max-width: 312px; height: auto !important; margin: 0 auto !important; text-align: center; }
+#ns-section-icon-text_1793286412431 .icon-text-item { align-items: center !important; width: 100%; }
+#ns-section-icon-text_1793286412431 .swiper-pagination { display: none !important; }
+}

@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía visual TWP</title>
+<style>
+/* ==========================================================================
+   The Whispering Pages — tokens de diseño (ingeniería inversa)
+   Relevado: 27/10/2026 · thewhisperingpages.com · 1440 px y 390 px
+   Fuente de los valores: variables CSS del tema Dawn 13.0.1, variables
+   globales de GemPages (.gps) y estilos computados de los elementos.
+   Lo marcado [No verificado] es aproximado o deducido; no salió del código.
+   ========================================================================== */
+
+/* Fuentes: todas las de Google Fonts son OFL (uso web libre).
+   - General Sans: Fontshare / Indian Type Foundry (licencia ITF FFL, uso comercial gratuito; revisar términos).
+   - Bookman (vista previa del sello): en el sitio es ITC Bookman Std (comercial).
+     Alternativa libre equivalente: TeX Gyre Bonum (GUST Font License).
+   - Filson Pro (cargada en GemPages, uso no visto): comercial (Mostardesign). */
+@import url("https://fonts.googleapis.com/css2?family=Alike&family=Assistant:wght@400;700&family=Bayon&family=Passion+One:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap");
+
+:root {
+  /* ---------- Color: paleta base ---------- */
+  --twp-green-900: #16423C;   /* bandas oscuras, botón "Learn More / Shop Now", reseñas home */
+  --twp-green-850: #15423C;   /* hero de colecciones (variante casi idéntica) */
+  --twp-green-800: #18413D;   /* fondo de pop-ups Klaviyo */
+  --twp-green-750: #325B4B;   /* header del carrito UpCart */
+  --twp-green-700: #366251;   /* barra de anuncios, botón agregar al carrito, Checkout, borde de bundle activo */
+  --twp-green-650: #376251;   /* precio en tarjetas de colección (variante) */
+  --twp-green-cta: #00BF64;   /* CTA del hero de la home */
+  --twp-green-neon: #34F55B;  /* "50% OFF" y CTA de pop-ups */
+  --twp-green-save: #2ACD7E;  /* fondo de etiqueta "SAVE" (Kaching, al 56% de opacidad) */
+  --twp-green-save-text: #224C1D;
+  --twp-green-success: #16A34A; /* "Savings" en carrito */
+  --twp-green-progress: #10B981;/* barra de recompensas del carrito */
+  --twp-green-progress-bg: #D1FAE5;
+  --twp-green-progress-panel: #ECFDF5;
+  --twp-green-price-addon: #008A00;
+
+  --twp-cream-50: #FEFDF8;    /* fondo de header y bloques editoriales */
+  --twp-cream-60: #FEFDF9;    /* variante en home */
+  --twp-cream-100: #F7F2EC;   /* esquema "crema" del tema */
+  --twp-sand-300: #C6BEB0;    /* caja FAQ en página de producto */
+  --twp-gray-collection: #DDDDDD; /* fondo de grilla de colección */
+  --twp-white: #FFFFFF;
+  --twp-surface-soft: #F6F6F7;/* tarjetas upsell y footer del carrito */
+  --twp-surface-select: #F9F9F9;
+
+  --twp-ink-950: #121212;     /* texto Dawn base (en menú al 75%) */
+  --twp-ink-900: #151515;     /* titulares hero */
+  --twp-ink-850: #242424;     /* titulares de secciones GemPages */
+  --twp-ink-800: #2D2D2D;     /* bajadas del hero */
+  --twp-ink-600: #4D4D4D;     /* precio tachado, legends del personalizador */
+  --twp-ink-550: #555555;     /* label del campo de texto, tachado en bundles */
+  --twp-ink-500: #575757;     /* cuerpo de texto en secciones GemPages */
+  --twp-ink-450: #4F4F4F;     /* firma de reseñas */
+  --twp-border-input: #000000;/* borde input personalizador (0.8px) */
+  --twp-border-soft: #CCCCCC; /* stepper de cantidad */
+  --twp-border-review: #E2E2E2;
+
+  --twp-yellow-star: #EBBF20; /* estrellas Loox */
+  --twp-yellow-popup: #F4C805;/* CTA pop-up navideño */
+  --twp-error: #EA3335;       /* global GemPages (no visto en uso) [No verificado en UI] */
+  --twp-warning: #F2A73B;     /* global GemPages [No verificado en UI] */
+  --twp-shop-pay: #5A31F4;    /* botón "Buy with Shop" [No verificado: color de captura] */
+  --twp-overlay: rgba(20, 20, 20, 0.6);
+  --twp-bundle-idle: rgba(0, 0, 0, 0.07);
+
+  /* ---------- Color: roles ---------- */
+  --color-bg: var(--twp-white);
+  --color-bg-alt: var(--twp-cream-50);
+  --color-surface: var(--twp-white);
+  --color-surface-soft: var(--twp-surface-soft);
+  --color-surface-dark: var(--twp-green-900);
+  --color-text: var(--twp-ink-850);
+  --color-text-strong: var(--twp-ink-900);
+  --color-text-muted: var(--twp-ink-500);
+  --color-text-on-dark: var(--twp-white);
+  --color-border: var(--twp-ink-950);
+  --color-border-soft: var(--twp-border-soft);
+  --color-btn-primary: var(--twp-green-700);
+  --color-btn-primary-text: var(--twp-white);
+  --color-btn-primary-hover: var(--twp-green-900); /* [No verificado: el sitio no define hover propio] */
+  --color-btn-hero: var(--twp-green-cta);
+  --color-btn-secondary: var(--twp-white);
+  --color-btn-secondary-text: var(--twp-green-900);
+  --color-price: var(--twp-green-650);
+  --color-price-compare: var(--twp-ink-600);
+  --color-sale-badge-bg: rgba(42, 205, 126, 0.56);
+  --color-sale-badge-text: var(--twp-green-save-text);
+  --color-urgency-badge-bg: #000000;   /* "95% Of Customers Upgraded" */
+  --color-urgency-badge-text: #FFFFFF;
+  --color-savings: var(--twp-green-success);
+  --color-error: var(--twp-error);
+
+  /* ---------- Tipografía: familias ---------- */
+  --font-display-serif: "Alike", Georgia, "Times New Roman", serif;   /* H1 hero, pop-ups */
+  --font-display: "Passion One", "Arial Black", sans-serif;             /* titulares de sección, botones GemPages */
+  --font-display-condensed: "Bayon", "Arial Narrow", sans-serif;        /* hero de colecciones, botones de clips */
+  --font-ui: "General Sans", "Poppins", system-ui, sans-serif;          /* cuerpo de secciones GemPages */
+  --font-body: "Poppins", system-ui, sans-serif;                        /* tema Dawn, producto, carrito */
+  --font-heading-theme: "Assistant", system-ui, sans-serif;             /* H1 de páginas Dawn, anuncios */
+  --font-stamp: "TeX Gyre Bonum", "ITC Bookman", "Bookman Old Style", "URW Bookman", Georgia, serif; /* vista previa del sello */
+
+  /* ---------- Tipografía: escala (escritorio) ---------- */
+  /* H1 hero home: Alike 700 */
+  --type-h1-size: 63px;    --type-h1-lh: 1.1;   --type-h1-weight: 700;
+  /* H1 hero colecciones: Bayon 700, ls 0.78px */
+  --type-h1-collection-size: 80px; --type-h1-collection-lh: 1;
+  /* H2 sección: Passion One 400 (rango visto 40–80px, más común 56px) */
+  --type-h2-size: 56px;    --type-h2-lh: 1.3;   --type-h2-weight: 400;
+  --type-h2-xl-size: 80px; /* "Heirlooms…", "Make Gifting…" (span interno a 52–69px) */
+  /* H3 / título de tarjeta: General Sans 700 */
+  --type-h3-size: 28px;    --type-h3-lh: 1.5;   --type-h3-weight: 700;
+  /* Título de producto (PDP): Poppins 700, ls 0.78px */
+  --type-product-title-size: 24px; --type-product-title-lh: 1.3;
+  /* Cuerpo: General Sans 400, ls 0.6px */
+  --type-body-size: 16px;  --type-body-lh: 1.8;  --type-body-ls: 0.6px;
+  --type-body-lead-size: 20px; --type-body-lead-lh: 1.5; --type-body-lead-weight: 500;
+  /* Cuerpo chico */
+  --type-small-size: 13px; --type-small-lh: 1.7;
+  /* Botón GemPages: Passion One 400 (contenedor 38px, texto 30px) */
+  --type-btn-size: 30px;   --type-btn-lh: 1.9;
+  /* Botón de compra (PDP): Poppins 700 */
+  --type-btn-atc-size: 18px;
+  /* Navegación: Poppins 400, ls 0.6px, color al 75% */
+  --type-nav-size: 14px;   --type-nav-lh: 1.3;  --type-nav-ls: 0.6px;
+  /* Precio */
+  --type-price-size: 18px; --type-price-weight: 700;
+  --type-price-compare-size: 18px; --type-price-compare-weight: 400;
+  /* Etiquetas (badges Kaching) */
+  --type-label-size: 12px; --type-label-lh: 1.4;
+  /* Anuncios: Assistant 700 */
+  --type-announcement-size: 22px;
+  /* Texto de la vista previa del sello (texto curvo) [tamaño relativo No verificado] */
+  --type-stamp-size: 7.5%;
+
+  /* ---------- Tipografía: escala (móvil ≤ 749px) ---------- */
+  --type-h1-size-m: 35px;   --type-h1-lh-m: 1.2;
+  --type-h1-collection-size-m: 45px;
+  --type-h2-size-m: 50px;   /* Passion One sigue grande en móvil */
+  --type-h3-size-m: 22px;
+  --type-product-title-size-m: 20px;
+  --type-body-size-m: 14px; --type-body-lh-m: 1.8;
+  --type-body-lead-size-m: 16px;
+  --type-btn-size-m: 20px;  /* CTA hero móvil (Alike 700 20) */
+  --type-btn-atc-size-m: 24px;
+  --type-nav-size-m: 18px;  /* menú lateral */
+  --type-announcement-size-m: 17px;
+
+  /* ---------- Espaciado (escala GemPages) ---------- */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-80: 80px;
+  --space-112: 112px;
+  --space-section-y: 80px;     /* [No verificado: aproximación por alturas de secciones] */
+  --space-section-y-m: 48px;   /* [No verificado] */
+  --gutter-mobile: 15px;       /* medido: contenido de 360 px en viewport de 390 */
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;     /* --page-width 120rem y --g-ct-w */
+  --container-pad: 16px;
+  --header-pad-x: 50px;
+  --header-height: 155px;
+  --header-height-m: 110px;
+  --announcement-height: 46px;
+  --pdp-col-gap: 32px;         /* galería 584 + columna 584 */
+  --grid-gap-desktop: 8px;     /* Dawn */
+  --grid-gap-mobile: 4px;
+  --bp-sm: 750px;              /* Dawn */
+  --bp-md: 990px;              /* Dawn: header pasa a menú lateral por debajo */
+  --bp-gem-mobile: 767px;      /* GemPages */
+  --bp-gem-tablet: 1024px;     /* GemPages */
+
+  /* ---------- Bordes, radios, sombras ---------- */
+  --radius-0: 0px;             /* botón agregar al carrito, inputs, media, Checkout */
+  --radius-sm: 3px;
+  --radius-btn: 6px;           /* botones GemPages y pop-ups */
+  --radius-bundle: 8px;        /* tarjetas Kaching y upsells del carrito */
+  --radius-drawer: 15px;       /* tarjeta flotante del carrito */
+  --radius-lg: 16px;
+  --radius-pill: 40px;         /* variant pills Dawn */
+  --radius-round: 999px;
+  --border-input: 0.8px solid var(--twp-border-input);
+  --border-hairline: 1px solid rgba(18, 18, 18, 0.1);
+  --shadow-bundle-active: inset 0 0 0 2px var(--twp-green-700);
+  --shadow-bundle-hover: inset 0 0 0 2px rgba(0, 0, 0, 0.3);
+  --shadow-review-card: 0 0 3px rgba(0, 0, 0, 0.2);
+  --shadow-input-focus: 0 0 0 1px #374151, 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  /* ---------- Íconos ---------- */
+  --icon-stroke: 1px;          /* íconos Dawn (cuenta, carrito, búsqueda) */
+  --icon-size-header: 44px;    /* área clickeable */
+
+  /* ---------- Movimiento (Dawn) ---------- */
+  --duration-short: 0.1s;
+  --duration-default: 0.2s;
+  --duration-medium: 0.3s;
+  --duration-long: 0.5s;
+  --duration-extra-long: 0.6s;
+  --ease-out-slow: cubic-bezier(0, 0, 0.3, 1);
+  --ease-btn: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 749px) {
+  :root {
+    --type-h1-size: var(--type-h1-size-m);
+    --type-h1-lh: var(--type-h1-lh-m);
+    --type-h1-collection-size: var(--type-h1-collection-size-m);
+    --type-h2-size: var(--type-h2-size-m);
+    --type-h3-size: var(--type-h3-size-m);
+    --type-product-title-size: var(--type-product-title-size-m);
+    --type-body-size: var(--type-body-size-m);
+    --type-body-lead-size: var(--type-body-lead-size-m);
+    --type-btn-size: var(--type-btn-size-m);
+    --type-btn-atc-size: var(--type-btn-atc-size-m);
+    --type-nav-size: var(--type-nav-size-m);
+    --type-announcement-size: var(--type-announcement-size-m);
+    --space-section-y: var(--space-section-y-m);
+    --container-pad: var(--gutter-mobile);
+  }
+}
+
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); font-size: var(--type-body-size); line-height: var(--type-body-lh); letter-spacing: var(--type-body-ls); -webkit-font-smoothing: antialiased; }
+img, svg { display: block; max-width: 100%; }
+.wrap { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+.doc-head { background: var(--twp-ink-950); color: #fff; padding: 28px 0; }
+.doc-head h1 { font-family: var(--font-display); font-weight: 400; font-size: 44px; line-height: 1; margin: 0 0 8px; letter-spacing: 0; }
+.doc-head p { margin: 0; color: #cfcfcf; font-size: 14px; max-width: 760px; }
+.doc-nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px; font-size: 13px; }
+.doc-nav a { color: #fff; }
+.doc-section { padding: 56px 0; border-bottom: 1px solid #e8e8e8; }
+.doc-section > .wrap > h2 { font-family: var(--font-ui); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--twp-ink-600); margin: 0 0 6px; }
+.doc-section > .wrap > .lead { font-family: var(--font-display); font-size: 40px; line-height: 1.1; margin: 0 0 28px; color: var(--color-text); font-weight: 400; letter-spacing: 0; }
+.note { font-size: 13px; line-height: 1.6; color: var(--twp-ink-500); max-width: 760px; }
+.tag-nv { display: inline-block; font-size: 11px; background: #fff4d6; color: #7a5b00; padding: 1px 6px; border-radius: 3px; letter-spacing: 0; }
+
+/* Colores */
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.sw { border: 1px solid #e6e6e6; }
+.sw-chip { height: 84px; }
+.sw-meta { padding: 8px 10px 10px; font-size: 12px; line-height: 1.45; letter-spacing: 0; }
+.sw-meta b { display: block; font-size: 13px; }
+.sw-meta code { font-size: 12px; color: var(--twp-ink-600); }
+
+/* Tipografía */
+.type-row { display: grid; grid-template-columns: 220px 1fr; gap: 20px; align-items: baseline; padding: 16px 0; border-top: 1px solid #eee; }
+.type-row .spec { font-size: 12px; line-height: 1.5; color: var(--twp-ink-600); letter-spacing: 0; }
+.type-row .spec b { color: var(--color-text); display: block; font-size: 13px; }
+.t-h1 { font-family: var(--font-display-serif); font-weight: 700; font-size: var(--type-h1-size); line-height: var(--type-h1-lh); color: var(--twp-ink-900); letter-spacing: 0; }
+.t-h1c { font-family: var(--font-display-condensed); font-weight: 700; font-size: var(--type-h1-collection-size); line-height: 1; letter-spacing: .78px; text-transform: uppercase; color: var(--twp-green-900); }
+.t-h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--type-h2-size); line-height: var(--type-h2-lh); letter-spacing: 0; }
+.t-h3 { font-family: var(--font-ui); font-weight: 700; font-size: var(--type-h3-size); line-height: var(--type-h3-lh); letter-spacing: 0; }
+.t-pt { font-family: var(--font-body); font-weight: 700; font-size: var(--type-product-title-size); line-height: var(--type-product-title-lh); letter-spacing: .78px; }
+.t-lead { font-family: var(--font-ui); font-weight: 500; font-size: var(--type-body-lead-size); line-height: var(--type-body-lead-lh); color: var(--twp-ink-800); }
+.t-body { font-family: var(--font-ui); font-size: var(--type-body-size); line-height: var(--type-body-lh); color: var(--color-text-muted); }
+.t-small { font-family: var(--font-ui); font-size: var(--type-small-size); line-height: var(--type-small-lh); color: var(--color-text-muted); letter-spacing: 0; }
+.t-nav { font-family: var(--font-body); font-size: var(--type-nav-size); line-height: var(--type-nav-lh); letter-spacing: var(--type-nav-ls); color: rgba(18,18,18,.75); }
+.t-price { font-family: var(--font-body); font-weight: 700; font-size: var(--type-price-size); color: var(--color-price); }
+.t-compare { font-family: var(--font-body); font-size: var(--type-price-compare-size); color: var(--color-price-compare); text-decoration: line-through; margin-left: 8px; font-weight: 400; }
+.t-label { font-size: var(--type-label-size); line-height: var(--type-label-lh); }
+.t-stamp { font-family: var(--font-stamp); font-size: 22px; letter-spacing: 3px; text-transform: uppercase; }
+
+/* Espaciado */
+.space-row { display: flex; align-items: center; gap: 14px; font-size: 12px; letter-spacing: 0; margin: 6px 0; }
+.space-row span:first-child { width: 72px; color: var(--twp-ink-600); }
+.space-bar { height: 14px; background: var(--twp-green-700); }
+
+/* Botones */
+.btn-grid { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+.btn-demo { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.btn-demo .cap { font-size: 12px; color: var(--twp-ink-600); letter-spacing: 0; }
+.btn { display: inline-flex; align-items: center; justify-content: center; border: 0; cursor: pointer; text-decoration: none; transition: background-color var(--duration-default) var(--ease-btn), color var(--duration-default) var(--ease-btn), box-shadow var(--duration-default) var(--ease-btn); }
+.btn:focus-visible { outline: 2px solid var(--twp-ink-950); outline-offset: 3px; }
+.btn-hero { background: var(--color-btn-hero); color: #fff; font-family: var(--font-display-serif); font-size: 28px; padding: 12px 24px; min-width: 360px; height: 62px; border-radius: var(--radius-btn); letter-spacing: 0; }
+.btn-hero:hover { background: #00a856; }
+.btn-sec { background: var(--twp-green-900); color: #fff; font-family: var(--font-display); font-size: var(--type-btn-size); padding: 12px 24px; min-width: 320px; height: 62px; border-radius: var(--radius-btn); letter-spacing: .75px; }
+.btn-sec:hover { background: var(--twp-green-700); }
+.btn-inv { background: #fff; color: var(--twp-green-900); }
+.btn-inv:hover { background: var(--twp-cream-100); }
+.btn-atc { background: var(--color-btn-primary); color: #fff; font-family: var(--font-body); font-weight: 700; font-size: var(--type-btn-atc-size); height: 56px; width: 100%; padding: 12px 32px; border-radius: var(--radius-0); letter-spacing: 0; }
+.btn-atc:hover { background: var(--color-btn-primary-hover); }
+.btn-atc[disabled] { background: #9fb3ab; cursor: not-allowed; }
+.btn-text { background: none; color: var(--twp-ink-950); font-family: var(--font-body); font-size: 14px; text-decoration: underline; text-underline-offset: .3rem; padding: 6px 0; }
+.btn-text:hover { text-decoration-thickness: 2px; }
+.btn-micro { font-family: var(--font-ui); font-size: 13px; line-height: 22px; color: var(--twp-ink-500); letter-spacing: 0; }
+.on-dark { background: var(--twp-green-900); padding: 20px; }
+.on-dark .cap { color: #cfd9d6; }
+
+/* Header */
+.ann { background: var(--twp-green-700); color: #fff; text-align: center; font-family: var(--font-heading-theme); font-weight: 700; font-size: var(--type-announcement-size); line-height: 1.2; padding: 10px 16px; letter-spacing: 0; }
+.hdr { background: var(--twp-cream-50); }
+.hdr-in { display: flex; align-items: center; gap: 28px; height: 120px; padding: 0 var(--header-pad-x); max-width: var(--container-max); margin: 0 auto; }
+.logo-ph { width: 170px; height: 84px; display: grid; place-items: center; }
+.hdr nav { display: flex; gap: 4px; flex: 1; }
+.hdr nav a { padding: 12px; text-decoration: none; }
+.hdr nav a:hover { color: var(--twp-ink-950); text-decoration: underline; text-underline-offset: .3rem; }
+.hdr nav a.has-sub::after { content: ""; display: inline-block; width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg) translateY(-3px); margin-left: 9px; }
+.hdr-icons { display: flex; gap: 4px; }
+.icon-btn { width: 44px; height: 44px; display: grid; place-items: center; color: var(--twp-ink-950); background: none; border: 0; }
+.burger { display: none; }
+
+/* Hero */
+.hero { background: #f3f1ec; }
+.hero-in { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; max-width: var(--container-max); margin: 0 auto; padding: 56px var(--container-pad); }
+.eyebrow { display: flex; gap: 8px; align-items: center; font-family: var(--font-ui); font-weight: 700; font-size: 16px; color: var(--twp-ink-800); letter-spacing: .32px; }
+.stars { display: inline-flex; gap: 2px; color: #f5a623; }
+.hero h3 { margin: 14px 0 16px; }
+.divider-script { height: 18px; margin: 22px 0; width: 100%; max-width: 450px; }
+.checks { list-style: none; padding: 0; margin: 20px 0 0; }
+.checks li { display: flex; gap: 10px; align-items: center; font-family: var(--font-ui); font-weight: 500; font-size: 18px; color: var(--twp-ink-800); margin: 6px 0; letter-spacing: 0; }
+.check-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--twp-green-cta); display: grid; place-items: center; flex: none; }
+.ph { background: repeating-linear-gradient(135deg, #e7e3da 0 14px, #efece5 14px 28px); display: grid; place-items: center; color: #8a8577; font-size: 13px; text-align: center; letter-spacing: 0; }
+.ph-1x1 { aspect-ratio: 1 / 1; }
+
+/* Banda de beneficios y tarjeta */
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; background: var(--twp-gray-collection); padding: 32px; }
+.pcard a { color: inherit; text-decoration: none; }
+.pcard .ph { margin-bottom: 14px; }
+.pcard h4 { margin: 0 0 4px; font-family: var(--font-body); font-weight: 700; font-size: 20px; line-height: 1.3; letter-spacing: .78px; color: var(--twp-ink-950); }
+.rating { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--twp-ink-950); letter-spacing: 0; }
+.rating .stars { color: var(--twp-yellow-star); }
+.price-row { margin-top: 4px; }
+.pcard:hover .ph { filter: brightness(.97); }
+
+/* Personalizador */
+.pdp { display: grid; grid-template-columns: 1fr 1fr; gap: var(--pdp-col-gap); align-items: start; }
+.preview-box { position: sticky; top: 16px; background: #fff; border: 1px solid #eee; }
+.preview-box .stage { aspect-ratio: 1 / 1; display: grid; place-items: center; background: #fbfaf6; }
+.preview-cap { font-size: 12px; color: var(--twp-ink-600); padding: 8px 12px; letter-spacing: 0; border-top: 1px solid #eee; }
+.buy h3 { margin: 0; }
+.bullets { list-style: none; padding: 0; margin: 12px 0 0; }
+.bullets li { display: flex; gap: 10px; align-items: center; margin: 4px 0; font-size: 16px; line-height: 28.8px; }
+.bullets .ck { width: 18px; height: 18px; border-radius: 50%; background: var(--twp-ink-950); display: grid; place-items: center; flex: none; }
+.rule { height: 3px; background: #d9d9d9; margin: 18px 0; border: 0; }
+.pdp > * { min-width: 0; }
+fieldset { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
+legend { font-size: 18px; line-height: 32.4px; color: var(--twp-ink-600); padding: 0; }
+legend span { color: var(--twp-ink-950); }
+.designs { display: grid; grid-template-columns: repeat(8, 64px); gap: 10px; }
+.designs label, .colors label { cursor: pointer; position: relative; }
+.designs input, .colors input { position: absolute; opacity: 0; pointer-events: none; }
+.dthumb { width: 64px; height: 70px; border: 1px solid #d0d0d0; background: #fff; display: grid; place-items: center; transition: border-color var(--duration-default), box-shadow var(--duration-default); }
+.designs label:hover .dthumb { border-color: var(--twp-ink-600); }
+.designs input:checked + .dthumb { border-color: var(--twp-ink-950); box-shadow: 0 0 0 1px var(--twp-ink-950); }
+.designs input:focus-visible + .dthumb, .colors input:focus-visible + .cdot { outline: 2px solid var(--twp-green-700); outline-offset: 2px; }
+.colors { display: flex; gap: 6px; }
+.cdot { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #c8c8c8; display: block; cursor: pointer; }
+.colors input:checked + .cdot { box-shadow: 0 0 0 2px var(--twp-ink-950); }
+.field-label { display: flex; justify-content: space-between; font-size: 16px; color: var(--twp-ink-550); margin-bottom: 6px; letter-spacing: 0; }
+.field-label .count { font-size: 13px; color: var(--twp-ink-600); }
+.txt { width: 100%; height: 50px; border: var(--border-input); border-radius: var(--radius-0); padding: 10px 15px; font: inherit; font-size: 16px; letter-spacing: 0; background: #fff; color: var(--twp-ink-950); }
+.txt:focus { outline: none; box-shadow: var(--shadow-input-focus); }
+.txt[aria-invalid="true"] { border-color: var(--color-error); box-shadow: 0 0 0 1px var(--color-error); }
+.err { color: var(--color-error); font-size: 13px; margin-top: 6px; min-height: 20px; letter-spacing: 0; }
+.bundle-title { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; margin: 18px 0 10px; letter-spacing: 0; }
+.bundle-title::before, .bundle-title::after { content: ""; flex: 1; height: 1px; background: #cfcfcf; }
+.deal { position: relative; display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; align-items: center; padding: 14px 20px; border-radius: var(--radius-bundle); background: var(--twp-bundle-idle); margin-bottom: 10px; cursor: pointer; transition: box-shadow var(--duration-default); letter-spacing: 0; }
+.deal:hover { box-shadow: var(--shadow-bundle-hover); }
+.deal input { position: absolute; opacity: 0; }
+.deal .radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #999; background: #fff; }
+.deal:has(input:checked) { background: #fff; box-shadow: var(--shadow-bundle-active); }
+.deal:has(input:checked) .radio { border-color: var(--twp-green-700); background: radial-gradient(var(--twp-green-700) 45%, #fff 50%); }
+.deal-name { font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--twp-ink-950); }
+.deal-sub { font-size: 14px; color: #000; }
+.save { display: inline-block; background: var(--color-sale-badge-bg); color: var(--color-sale-badge-text); font-size: 12px; padding: 4px 10px; border-radius: 6px; margin-top: 4px; }
+.deal-price { text-align: right; }
+.deal-price b { display: block; font-size: 20px; color: #000; }
+.deal-price s { font-size: 14px; color: var(--twp-ink-550); }
+.pop-badge { position: absolute; top: -12px; right: 12px; background: var(--color-urgency-badge-bg); color: #fff; font: 700 12px/1 system-ui, sans-serif; padding: 6px 10px; border-radius: 4px; }
+.trust { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px; margin-top: 18px; font-size: 15px; line-height: 1.3; letter-spacing: 0; }
+.trust svg { margin: 0 auto 6px; }
+.included { display: grid; grid-template-columns: 110px 1fr; gap: 14px; border: 1px solid #bdbdbd; padding: 12px; margin-top: 18px; align-items: center; letter-spacing: 0; }
+.included b { font-size: 16px; }
+.included ul { margin: 6px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.7; }
+
+/* Responsive */
+@media (max-width: 989px) {
+  .hdr nav, .hdr-icons .acc { display: none; }
+  .burger { display: grid; }
+  .hdr-in { height: 96px; justify-content: space-between; padding: 0 var(--container-pad); }
+  .logo-ph { width: 130px; height: 64px; }
+}
+@media (max-width: 749px) {
+  .hero-in { grid-template-columns: 1fr; text-align: center; padding: 0 0 32px; gap: 20px; }
+  .hero-in > .ph { order: -1; }
+  .hero-in > div { padding: 0 var(--container-pad); }
+  .eyebrow, .checks { justify-content: center; }
+  .checks { display: flex; gap: 16px; flex-wrap: wrap; }
+  .checks li { font-size: 13px; }
+  .divider-script { margin-left: auto; margin-right: auto; }
+  .btn-hero { min-width: 0; width: 100%; height: 67px; font-size: 20px; font-weight: 700; }
+  .btn-sec { min-width: 0; width: 100%; }
+  .cards { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 12px; }
+  .pcard h4 { font-size: 16px; letter-spacing: 0; }
+  .pdp { grid-template-columns: 1fr; }
+  .preview-box { top: 0; z-index: 5; }
+  .preview-box .stage { aspect-ratio: auto; height: 210px; }
+  .preview-box .stage svg { height: 200px; width: 200px; }
+  .designs { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 64px; overflow-x: auto; padding-bottom: 8px; }
+  .type-row { grid-template-columns: 1fr; gap: 6px; }
+  .doc-section > .wrap > .lead { font-size: 30px; }
+  .t-h1c { font-size: 45px; }
+  .deal { padding: 12px 14px; }
+  .deal-name { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<header class="doc-head">
+  <div class="wrap">
+    <h1>Guía visual · The Whispering Pages</h1>
+    <p>Tokens y componentes recreados a partir del relevamiento del 27/10/2026. Las fotos son rectángulos de relleno, los textos son propios y el sello es un diseño genérico. Lo aproximado lleva la etiqueta <span class="tag-nv">No verificado</span>.</p>
+    <nav class="doc-nav" aria-label="Secciones">
+      <a href="#colores">Colores</a><a href="#tipo">Tipografía</a><a href="#espacios">Espaciado</a><a href="#botones">Botones</a><a href="#header">Header</a><a href="#hero">Hero</a><a href="#tarjeta">Tarjeta de producto</a><a href="#personalizador">Personalizador</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="doc-section" id="colores">
+  <div class="wrap">
+    <h2>01 · Color</h2>
+    <p class="lead">Verde bosque sobre crema</p>
+    <div class="swatches" id="swatches"></div>
+    <p class="note" style="margin-top:16px">Los colores del embosador (Onyx, Rose, etc.) son imágenes en el sitio, por eso acá no hay HEX para ellos.</p>
+  </div>
+</section>
+
+<section class="doc-section" id="tipo">
+  <div class="wrap">
+    <h2>02 · Tipografía</h2>
+    <p class="lead">Escala tipográfica</p>
+    <div class="type-row"><div class="spec"><b>H1 hero</b>Alike 700 · 63/69 px · móvil 35/42</div><div class="t-h1">Tu biblioteca, con tu nombre</div></div>
+    <div class="type-row"><div class="spec"><b>H1 colección</b>Bayon 700 · 80/80 · ls .78 · móvil 45</div><div class="t-h1c">Más de 30 diseños</div></div>
+    <div class="type-row"><div class="spec"><b>H2 sección</b>Passion One 400 · 56/73 (rango 40–80)</div><div class="t-h2">¿Cómo se usa?</div></div>
+    <div class="type-row"><div class="spec"><b>H3 / tarjeta</b>General Sans 700 · 28/42 · móvil 22/33</div><div class="t-h3">Embosador personalizado</div></div>
+    <div class="type-row"><div class="spec"><b>Título de producto</b>Poppins 700 · 24/31 · ls .78 · móvil 20</div><div class="t-pt">Embosador para libros</div></div>
+    <div class="type-row"><div class="spec"><b>Cuerpo destacado</b>General Sans 500 · 20/30 · ls .6 · móvil 16</div><div class="t-lead">Marcá tus libros con un relieve limpio y elegante, sin tinta.</div></div>
+    <div class="type-row"><div class="spec"><b>Cuerpo</b>General Sans 400 · 16/28,8 · ls .6 · #575757 · móvil 14</div><div class="t-body">Texto de relleno para medir el ritmo del párrafo. Se apoya el papel, se presiona la palanca y queda la marca en relieve en la primera hoja del libro.</div></div>
+    <div class="type-row"><div class="spec"><b>Cuerpo chico</b>General Sans 400 · 13/22</div><div class="t-small">Envío gratis &nbsp;|&nbsp; Garantía de 90 días</div></div>
+    <div class="type-row"><div class="spec"><b>Navegación</b>Poppins 400 · 14/18 · ls .6 · 75 %</div><div class="t-nav">Tienda &nbsp;&nbsp; Nosotros &nbsp;&nbsp; Ayuda &nbsp;&nbsp; Seguí tu pedido</div></div>
+    <div class="type-row"><div class="spec"><b>Precio y tachado</b>Poppins 700 / 400 · 18</div><div><span class="t-price">$ 59.990</span><span class="t-compare">$ 89.990</span></div></div>
+    <div class="type-row"><div class="spec"><b>Etiqueta</b>Sistema 400 · 12/17</div><div><span class="save t-label">AHORRÁS $ 30.000</span></div></div>
+    <div class="type-row"><div class="spec"><b>Texto del sello</b>Bookman (en el sitio) → TeX Gyre Bonum / serif · mayúsculas espaciadas <span class="tag-nv">No verificado</span></div><div class="t-stamp">De la biblioteca de</div></div>
+  </div>
+</section>
+
+<section class="doc-section" id="espacios">
+  <div class="wrap">
+    <h2>03 · Espaciado y radios</h2>
+    <p class="lead">Escala de GemPages</p>
+    <div id="spaces"></div>
+    <p class="note" style="margin-top:18px">Radios: 0 en el botón de compra y en inputs · 6 px en botones de sección · 8 px en tarjetas de oferta · 15 px en el carrito flotante. Contenedor de 1200 px; gutter móvil de 15 px.</p>
+  </div>
+</section>
+
+<section class="doc-section" id="botones">
+  <div class="wrap">
+    <h2>04 · Botones</h2>
+    <p class="lead">Principal, secundario y texto</p>
+    <div class="btn-grid">
+      <div class="btn-demo"><a class="btn btn-hero" href="#personalizador">Personalizá el tuyo</a><span class="cap">Hero · #00BF64 · Alike · r6</span></div>
+      <div class="btn-demo"><a class="btn btn-sec" href="#personalizador">Ver más</a><span class="btn-micro">Envío gratis &nbsp;|&nbsp; Garantía de 90 días</span><span class="cap">Secundario · #16423C · Passion One 30 · r6</span></div>
+      <div class="btn-demo on-dark"><a class="btn btn-sec btn-inv" href="#personalizador">Comprar</a><span class="cap">Invertido sobre verde</span></div>
+      <div class="btn-demo" style="width:320px"><button class="btn btn-atc" type="button">Agregar al carrito</button><span class="cap">Compra · #366251 · Poppins 700 18 · r0</span></div>
+      <div class="btn-demo" style="width:320px"><button class="btn btn-atc" type="button" disabled>Agregar al carrito</button><span class="cap">Deshabilitado (propuesta; no visto en el sitio)</span></div>
+      <div class="btn-demo"><button class="btn btn-text" type="button">No, gracias</button><span class="cap">Texto</span></div>
+    </div>
+    <p class="note" style="margin-top:18px">Los hover son propuestas (un tono más oscuro): el sitio no define un hover de color propio <span class="tag-nv">No verificado</span>.</p>
+  </div>
+</section>
+
+<section class="doc-section" id="header" style="padding-bottom:0">
+  <div class="wrap">
+    <h2>05 · Barra de anuncios y header</h2>
+    <p class="lead">Header sticky sobre crema</p>
+  </div>
+  <div class="ann">30 % OFF + stickers dorados de regalo 🎁</div>
+  <div class="hdr">
+    <div class="hdr-in">
+      <button class="icon-btn burger" aria-label="Menú"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 6h16M3 11h16M3 16h16"/></svg></button>
+      <div class="logo-ph" aria-label="Logo de relleno"><svg viewBox="0 0 170 84" width="170" height="84"><circle cx="42" cy="42" r="30" fill="none" stroke="#121212" stroke-width="1.5"/><path d="M27 48c8-6 22-6 30 0M27 48V34c8-6 22-6 30 0v14" fill="none" stroke="#121212" stroke-width="1.5"/><line x1="42" y1="31" x2="42" y2="46" stroke="#121212" stroke-width="1.5"/><text x="82" y="38" font-family="Alike, serif" font-size="15" fill="#121212">Tu Marca</text><text x="82" y="56" font-family="Poppins, sans-serif" font-size="9" letter-spacing="2" fill="#4d4d4d">EX LIBRIS</text></svg></div>
+      <nav aria-label="Principal" class="t-nav"><a href="#" class="has-sub">Tienda</a><a href="#">Nosotros</a><a href="#" class="has-sub">Ayuda</a><a href="#">Seguí tu pedido</a></nav>
+      <div class="hdr-icons">
+        <button class="icon-btn acc" aria-label="Buscar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1"><circle cx="8.5" cy="8.5" r="6"/><path d="m13 13 5 5"/></svg></button>
+        <button class="icon-btn acc" aria-label="Cuenta"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1"><circle cx="10" cy="7" r="4"/><path d="M3 18c1-4 4-6 7-6s6 2 7 6"/></svg></button>
+        <button class="icon-btn" aria-label="Carrito"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 6h14l-1.2 11H4.2z"/><path d="M7 6a3 3 0 0 1 6 0"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-section" id="hero" style="padding:0">
+  <div class="hero">
+    <div class="hero-in">
+      <div>
+        <div class="eyebrow"><span class="stars" aria-hidden="true">★★★★★</span> Miles de lectores lo usan</div>
+        <h3 class="t-h1">Un sello para tus libros, hecho a tu medida</h3>
+        <p class="t-lead" style="margin:0">Personalizá tu biblioteca con un relieve que dura para siempre. Texto de relleno.</p>
+        <svg class="divider-script" viewBox="0 0 450 18" preserveAspectRatio="none" aria-hidden="true"><path d="M2 10 C 120 2, 200 16, 300 9 S 420 6, 448 10" fill="none" stroke="#2d2d2d" stroke-width="1.2"/></svg>
+        <a class="btn btn-hero" href="#personalizador">Personalizá el tuyo</a>
+        <ul class="checks">
+          <li><span class="check-dot"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.5 5 9l5-6" fill="none" stroke="#fff" stroke-width="2"/></svg></span>Stickers de regalo</li>
+          <li><span class="check-dot"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.5 5 9l5-6" fill="none" stroke="#fff" stroke-width="2"/></svg></span>Garantía de devolución</li>
+        </ul>
+      </div>
+      <div class="ph ph-1x1">Imagen 1:1 · 585 px<br>(promo o producto)</div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-section" id="tarjeta">
+  <div class="wrap">
+    <h2>06 · Tarjeta de producto</h2>
+    <p class="lead">Grilla de colección</p>
+    <div class="cards">
+      <article class="pcard"><a href="#personalizador"><div class="ph ph-1x1">Dibujo del sello<br>sobre crema · 1:1</div><h4>Colección Clásica</h4><div class="rating"><span class="stars">★★★★★</span>(128)</div><div class="price-row"><span class="t-price">$ 59.990</span><span class="t-compare">$ 89.990</span></div></a></article>
+      <article class="pcard"><a href="#personalizador"><div class="ph ph-1x1">1:1</div><h4>Iniciales</h4><div class="rating"><span class="stars">★★★★★</span>(128)</div><div class="price-row"><span class="t-price">$ 59.990</span><span class="t-compare">$ 89.990</span></div></a></article>
+      <article class="pcard"><a href="#personalizador"><div class="ph ph-1x1">1:1</div><h4>Botánica</h4><div class="rating"><span class="stars">★★★★★</span>(128)</div><div class="price-row"><span class="t-price">$ 59.990</span><span class="t-compare">$ 89.990</span></div></a></article>
+      <article class="pcard"><a href="#personalizador"><div class="ph ph-1x1">1:1</div><h4>Gatos lectores</h4><div class="rating"><span class="stars">★★★★★</span>(128)</div><div class="price-row"><span class="t-price">$ 59.990</span><span class="t-compare">$ 89.990</span></div></a></article>
+    </div>
+    <p class="note" style="margin-top:14px">En el original, el número de reseñas es el conteo global de la tienda repetido en todas las tarjetas. En el MVP conviene usar el de cada producto. Precios de relleno.</p>
+  </div>
+</section>
+
+<section class="doc-section" id="personalizador">
+  <div class="wrap">
+    <h2>07 · Personalizador con vista previa</h2>
+    <p class="lead">Diseño → color → texto → oferta</p>
+    <div class="pdp">
+      <div class="preview-box">
+        <div class="stage">
+          <svg id="stamp" viewBox="0 0 400 400" width="380" height="380" role="img" aria-label="Vista previa del sello">
+            <defs>
+              <path id="arcTop" d="M 80 200 A 120 120 0 0 1 320 200"/>
+              <path id="arcBottom" d="M 62 200 A 138 138 0 0 0 338 200"/>
+            </defs>
+            <circle cx="200" cy="200" r="186" fill="none" stroke="#1b1b1b" stroke-width="2"/>
+            <circle cx="200" cy="200" r="176" fill="none" stroke="#1b1b1b" stroke-width="1" stroke-dasharray="2 6"/>
+            <text font-family="TeX Gyre Bonum, Bookman Old Style, Georgia, serif" font-size="21" letter-spacing="2.5" fill="#1b1b1b" text-anchor="middle"><textPath id="topText" href="#arcTop" startOffset="50%">DE LA BIBLIOTECA DE</textPath></text>
+            <g id="motif" transform="translate(200 200)"></g>
+            <text font-family="TeX Gyre Bonum, Bookman Old Style, Georgia, serif" font-size="26" letter-spacing="2" fill="#1b1b1b" text-anchor="middle" dominant-baseline="hanging"><textPath id="bottomText" href="#arcBottom" startOffset="50%">TU NOMBRE</textPath></text>
+          </svg>
+        </div>
+        <div class="preview-cap">Vista previa en vivo · en móvil queda fija arriba mientras escribís</div>
+      </div>
+
+      <form class="buy" onsubmit="return false" novalidate>
+        <h3 class="t-pt">Embosador personalizado</h3>
+        <div class="rating" style="margin-top:4px"><span class="stars">★★★★★</span>(128)</div>
+        <ul class="bullets">
+          <li><span class="ck"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6.5 5 9l5-6" fill="none" stroke="#fff" stroke-width="2"/></svg></span>Tu firma en cada libro</li>
+          <li><span class="ck"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6.5 5 9l5-6" fill="none" stroke="#fff" stroke-width="2"/></svg></span>Libros, sobres y stickers</li>
+          <li><span class="ck"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6.5 5 9l5-6" fill="none" stroke="#fff" stroke-width="2"/></svg></span>Sin tinta, fácil de usar</li>
+        </ul>
+        <hr class="rule">
+
+        <fieldset>
+          <legend>Diseño: <span id="designName">Libro abierto</span></legend>
+          <div class="designs" id="designs"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Color: <span id="colorName">Grafito</span></legend>
+          <div class="colors" id="colors"></div>
+        </fieldset>
+
+        <div>
+          <label class="field-label" for="nameInput"><span>Texto inferior (máx. 20 caracteres)</span><span class="count" id="count">0/20</span></label>
+          <input class="txt" id="nameInput" type="text" maxlength="20" placeholder="ej.: tu nombre" autocomplete="off" aria-describedby="err">
+          <div class="err" id="err" role="alert"></div>
+        </div>
+
+        <div class="bundle-title">ARMÁ TU PACK Y AHORRÁ</div>
+        <label class="deal"><input type="radio" name="deal" value="1" checked><span class="radio"></span><span><span class="deal-name">Embosador</span><br><span class="save">AHORRÁS $ 30.000</span></span><span class="deal-price"><b>$ 59.990</b><s>$ 89.990</s></span></label>
+        <label class="deal"><span class="pop-badge">El más elegido</span><input type="radio" name="deal" value="2"><span class="radio"></span><span><span class="deal-name">Pack regalo</span><br><span class="deal-sub">Embosador + caja + stickers 🎁</span><br><span class="save">AHORRÁS $ 48.000</span></span><span class="deal-price"><b>$ 79.990</b><s>$ 127.990</s></span></label>
+
+        <button class="btn btn-atc" type="submit" id="atc" style="margin-top:8px">Agregar al carrito</button>
+
+        <div class="trust">
+          <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="1.2"><path d="M2 7h12v9H2zM14 10h4l3 3v3h-7z"/><circle cx="6" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>Envío a todo el país</div>
+          <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="1.2"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>Hecho a pedido</div>
+          <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="1.2"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg>Garantía</div>
+        </div>
+
+        <div class="included">
+          <div class="ph ph-1x1" style="font-size:11px">Foto 1:1</div>
+          <div><b>Incluido de regalo:</b><ul><li>50 stickers dorados</li><li>Estuche de viaje</li></ul></div>
+        </div>
+      </form>
+    </div>
+    <p class="note" style="margin-top:20px">Interacción de muestra: elegir un diseño cambia la ilustración y el nombre en el legend; el texto se pasa a mayúsculas y se curva abajo; con el campo vacío, "Agregar al carrito" muestra un error (en el sitio original no lo vi). Los motivos son formas geométricas genéricas, no los diseños de la marca.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  var colors = [
+    ['--twp-green-900', '#16423C', 'Superficie oscura, botón secundario'],
+    ['--twp-green-700', '#366251', 'Botón de compra, anuncios'],
+    ['--twp-green-750', '#325B4B', 'Header del carrito'],
+    ['--twp-green-800', '#18413D', 'Pop-ups'],
+    ['--twp-green-cta', '#00BF64', 'CTA del hero'],
+    ['--twp-green-neon', '#34F55B', '"50% OFF" en pop-ups'],
+    ['--twp-green-save', '#2ACD7E', 'Etiqueta de ahorro (56 %)'],
+    ['--twp-green-progress', '#10B981', 'Barra de recompensas'],
+    ['--twp-cream-50', '#FEFDF8', 'Header y fondo alternativo'],
+    ['--twp-cream-100', '#F7F2EC', 'Esquema crema'],
+    ['--twp-sand-300', '#C6BEB0', 'Caja FAQ'],
+    ['--twp-gray-collection', '#DDDDDD', 'Fondo de grilla'],
+    ['--twp-surface-soft', '#F6F6F7', 'Upsells y pie del carrito'],
+    ['--twp-white', '#FFFFFF', 'Fondo principal'],
+    ['--twp-ink-950', '#121212', 'Texto del tema'],
+    ['--twp-ink-850', '#242424', 'Titulares'],
+    ['--twp-ink-500', '#575757', 'Cuerpo'],
+    ['--twp-ink-600', '#4D4D4D', 'Tachado, legends'],
+    ['--twp-yellow-star', '#EBBF20', 'Estrellas'],
+    ['--twp-yellow-popup', '#F4C805', 'CTA navideño'],
+    ['--twp-error', '#EA3335', 'Error (No verificado en UI)']
+  ];
+  var sw = document.getElementById('swatches');
+  colors.forEach(function (c) {
+    var el = document.createElement('div');
+    el.className = 'sw';
+    el.innerHTML = '<div class="sw-chip" style="background:var(' + c[0] + ')"></div><div class="sw-meta"><b>' + c[1] + '</b><code>' + c[0] + '</code><br>' + c[2] + '</div>';
+    sw.appendChild(el);
+  });
+
+  var spaces = [2, 4, 8, 12, 16, 24, 32, 48, 80, 112];
+  var sp = document.getElementById('spaces');
+  spaces.forEach(function (s) {
+    var r = document.createElement('div');
+    r.className = 'space-row';
+    r.innerHTML = '<span>--space-' + s + '</span><span class="space-bar" style="width:' + s * 3 + 'px"></span><span>' + s + ' px</span>';
+    sp.appendChild(r);
+  });
+
+  // Motivos genéricos propios (geométricos), no los diseños del sitio
+  var motifs = [
+    ['Libro abierto', '<path d="M-70 20c25-18 50-18 70 0 20-18 45-18 70 0V-30c-25-18-50-18-70 0-20-18-45-18-70 0z" fill="none" stroke="#1b1b1b" stroke-width="5"/><line x1="0" y1="-30" x2="0" y2="20" stroke="#1b1b1b" stroke-width="5"/><path d="M-55 -15c15-8 30-8 45 0M-55 0c15-8 30-8 45 0M10 -15c15-8 30-8 45 0M10 0c15-8 30-8 45 0" fill="none" stroke="#1b1b1b" stroke-width="3"/>'],
+    ['Estrella', '<path d="M0 -60 14 -18 58 -18 22 8 36 50 0 24 -36 50 -22 8 -58 -18 -14 -18z" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>'],
+    ['Luna', '<path d="M18 -55a58 58 0 1 0 0 110 46 46 0 1 1 0-110z" fill="none" stroke="#1b1b1b" stroke-width="5"/><circle cx="40" cy="-20" r="5" fill="#1b1b1b"/><circle cx="52" cy="10" r="3" fill="#1b1b1b"/>'],
+    ['Hoja', '<path d="M0 60C-50 20-45-30 0-62 45-30 50 20 0 60z" fill="none" stroke="#1b1b1b" stroke-width="5"/><path d="M0 -55V58M0 -20l-20-14M0 0l22-16M0 22l-24-14" stroke="#1b1b1b" stroke-width="4" fill="none"/>'],
+    ['Taza', '<path d="M-45 -20h70v40a30 30 0 0 1-30 30h-10a30 30 0 0 1-30-30z" fill="none" stroke="#1b1b1b" stroke-width="5"/><path d="M25 -8h12a14 14 0 0 1 0 28h-12" fill="none" stroke="#1b1b1b" stroke-width="5"/><path d="M-25 -35c-6-8 6-14 0-22M-5 -35c-6-8 6-14 0-22" fill="none" stroke="#1b1b1b" stroke-width="4"/>'],
+    ['Montaña', '<path d="M-70 40-22-35 5 5 25-20 70 40z" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/><circle cx="40" cy="-45" r="12" fill="none" stroke="#1b1b1b" stroke-width="4"/>'],
+    ['Llave', '<circle cx="-35" cy="0" r="22" fill="none" stroke="#1b1b1b" stroke-width="5"/><path d="M-13 0h80M45 0v18M60 0v12" stroke="#1b1b1b" stroke-width="5" fill="none"/>'],
+    ['Iniciales', '<text x="0" y="22" text-anchor="middle" font-family="TeX Gyre Bonum, Georgia, serif" font-size="74" fill="#1b1b1b">A·B</text>']
+  ];
+  var dWrap = document.getElementById('designs');
+  var motif = document.getElementById('motif');
+  motifs.forEach(function (m, i) {
+    var l = document.createElement('label');
+    l.innerHTML = '<input type="radio" name="design" value="' + i + '"' + (i === 0 ? ' checked' : '') + ' aria-label="' + m[0] + '"><span class="dthumb"><svg viewBox="-80 -80 160 160" width="48" height="48">' + m[1] + '</svg></span>';
+    dWrap.appendChild(l);
+  });
+  function setMotif(i) { motif.innerHTML = '<g transform="scale(.95)">' + motifs[i][1] + '</g>'; document.getElementById('designName').textContent = motifs[i][0]; }
+  dWrap.addEventListener('change', function (e) { setMotif(+e.target.value); });
+  setMotif(0);
+
+  var cols = [['Grafito', '#2b2b2b'], ['Coral', '#e46a5e'], ['Rosa', '#f1c9c4'], ['Lavanda', '#a99be0'], ['Dorado', '#e5b93a'], ['Salvia', '#86a37c'], ['Marino', '#1f2f5a']];
+  var cWrap = document.getElementById('colors');
+  cols.forEach(function (c, i) {
+    var l = document.createElement('label');
+    l.innerHTML = '<input type="radio" name="color" value="' + i + '"' + (i === 0 ? ' checked' : '') + ' aria-label="' + c[0] + '"><span class="cdot" style="background:' + c[1] + '"></span>';
+    cWrap.appendChild(l);
+  });
+  cWrap.addEventListener('change', function (e) { document.getElementById('colorName').textContent = cols[+e.target.value][0]; });
+
+  var input = document.getElementById('nameInput');
+  var bottom = document.getElementById('bottomText');
+  var count = document.getElementById('count');
+  var err = document.getElementById('err');
+  input.addEventListener('input', function () {
+    var v = input.value.trim().toUpperCase();
+    bottom.textContent = v || 'TU NOMBRE';
+    count.textContent = input.value.length + '/20';
+    if (v) { input.removeAttribute('aria-invalid'); err.textContent = ''; }
+  });
+  document.getElementById('atc').addEventListener('click', function () {
+    if (!input.value.trim()) {
+      input.setAttribute('aria-invalid', 'true');
+      err.textContent = 'Escribí el texto que va en el sello.';
+      input.focus();
+    } else {
+      err.textContent = '';
+      this.textContent = 'Agregado ✓';
+      var b = this; setTimeout(function () { b.textContent = 'Agregar al carrito'; }, 1600);
+    }
+  });
+})();
+</script>
+</body>
+</html>

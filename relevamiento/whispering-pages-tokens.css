@@ -1,0 +1,306 @@
+/* ==========================================================================
+   The Whispering Pages — tokens de diseño (ingeniería inversa)
+   Relevado: 27/10/2026 · thewhisperingpages.com · 1440 px y 390 px
+   Fuente de los valores: variables CSS del tema Dawn 13.0.1, variables
+   globales de GemPages (.gps) y estilos computados de los elementos.
+   Lo marcado [No verificado] es aproximado o deducido; no salió del código.
+   ========================================================================== */
+
+/* Fuentes: todas las de Google Fonts son OFL (uso web libre).
+   - General Sans: Fontshare / Indian Type Foundry (licencia ITF FFL, uso comercial gratuito; revisar términos).
+   - Bookman (vista previa del sello): en el sitio es ITC Bookman Std (comercial).
+     Alternativa libre equivalente: TeX Gyre Bonum (GUST Font License).
+   - Filson Pro (cargada en GemPages, uso no visto): comercial (Mostardesign). */
+@import url("https://fonts.googleapis.com/css2?family=Alike&family=Assistant:wght@400;700&family=Bayon&family=Passion+One:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap");
+
+:root {
+  /* ---------- Color: paleta base ---------- */
+  --twp-green-900: #16423C;
+  /* bandas oscuras, botón "Learn More / Shop Now", reseñas home */
+  --twp-green-850: #15423C;
+  /* hero de colecciones (variante casi idéntica) */
+  --twp-green-800: #18413D;
+  /* fondo de pop-ups Klaviyo */
+  --twp-green-750: #325B4B;
+  /* header del carrito UpCart */
+  --twp-green-700: #366251;
+  /* barra de anuncios, botón agregar al carrito, Checkout, borde de bundle activo */
+  --twp-green-650: #376251;
+  /* precio en tarjetas de colección (variante) */
+  --twp-green-cta: #00BF64;
+  /* CTA del hero de la home */
+  --twp-green-neon: #34F55B;
+  /* "50% OFF" y CTA de pop-ups */
+  --twp-green-save: #2ACD7E;
+  /* fondo de etiqueta "SAVE" (Kaching, al 56% de opacidad) */
+  --twp-green-save-text: #224C1D;
+  --twp-green-success: #16A34A;
+  /* "Savings" en carrito */
+  --twp-green-progress: #10B981;
+  /* barra de recompensas del carrito */
+  --twp-green-progress-bg: #D1FAE5;
+  --twp-green-progress-panel: #ECFDF5;
+  --twp-green-price-addon: #008A00;
+
+  --twp-cream-50: #FEFDF8;
+  /* fondo de header y bloques editoriales */
+  --twp-cream-60: #FEFDF9;
+  /* variante en home */
+  --twp-cream-100: #F7F2EC;
+  /* esquema "crema" del tema */
+  --twp-sand-300: #C6BEB0;
+  /* caja FAQ en página de producto */
+  --twp-gray-collection: #DDDDDD;
+  /* fondo de grilla de colección */
+  --twp-white: #FFFFFF;
+  --twp-surface-soft: #F6F6F7;
+  /* tarjetas upsell y footer del carrito */
+  --twp-surface-select: #F9F9F9;
+
+  --twp-ink-950: #121212;
+  /* texto Dawn base (en menú al 75%) */
+  --twp-ink-900: #151515;
+  /* titulares hero */
+  --twp-ink-850: #242424;
+  /* titulares de secciones GemPages */
+  --twp-ink-800: #2D2D2D;
+  /* bajadas del hero */
+  --twp-ink-600: #4D4D4D;
+  /* precio tachado, legends del personalizador */
+  --twp-ink-550: #555555;
+  /* label del campo de texto, tachado en bundles */
+  --twp-ink-500: #575757;
+  /* cuerpo de texto en secciones GemPages */
+  --twp-ink-450: #4F4F4F;
+  /* firma de reseñas */
+  --twp-border-input: #000000;
+  /* borde input personalizador (0.8px) */
+  --twp-border-soft: #CCCCCC;
+  /* stepper de cantidad */
+  --twp-border-review: #E2E2E2;
+
+  --twp-yellow-star: #EBBF20;
+  /* estrellas Loox */
+  --twp-yellow-popup: #F4C805;
+  /* CTA pop-up navideño */
+  --twp-error: #EA3335;
+  /* global GemPages (no visto en uso) [No verificado en UI] */
+  --twp-warning: #F2A73B;
+  /* global GemPages [No verificado en UI] */
+  --twp-shop-pay: #5A31F4;
+  /* botón "Buy with Shop" [No verificado: color de captura] */
+  --twp-overlay: rgba(20, 20, 20, 0.6);
+  --twp-bundle-idle: rgba(0, 0, 0, 0.07);
+
+  /* ---------- Color: roles ---------- */
+  --color-bg: var(--twp-white);
+  --color-bg-alt: var(--twp-cream-50);
+  --color-surface: var(--twp-white);
+  --color-surface-soft: var(--twp-surface-soft);
+  --color-surface-dark: var(--twp-green-900);
+  --color-text: var(--twp-ink-850);
+  --color-text-strong: var(--twp-ink-900);
+  --color-text-muted: var(--twp-ink-500);
+  --color-text-on-dark: var(--twp-white);
+  --color-border: var(--twp-ink-950);
+  --color-border-soft: var(--twp-border-soft);
+  --color-btn-primary: var(--twp-green-700);
+  --color-btn-primary-text: var(--twp-white);
+  --color-btn-primary-hover: var(--twp-green-900);
+  /* [No verificado: el sitio no define hover propio] */
+  --color-btn-hero: var(--twp-green-cta);
+  --color-btn-secondary: var(--twp-white);
+  --color-btn-secondary-text: var(--twp-green-900);
+  --color-price: var(--twp-green-650);
+  --color-price-compare: var(--twp-ink-600);
+  --color-sale-badge-bg: rgba(42, 205, 126, 0.56);
+  --color-sale-badge-text: var(--twp-green-save-text);
+  --color-urgency-badge-bg: #000000;
+  /* "95% Of Customers Upgraded" */
+  --color-urgency-badge-text: #FFFFFF;
+  --color-savings: var(--twp-green-success);
+  --color-error: var(--twp-error);
+
+  /* ---------- Tipografía: familias ---------- */
+  --font-display-serif: "Alike", Georgia, "Times New Roman", serif;
+  /* H1 hero, pop-ups */
+  --font-display: "Passion One", "Arial Black", sans-serif;
+  /* titulares de sección, botones GemPages */
+  --font-display-condensed: "Bayon", "Arial Narrow", sans-serif;
+  /* hero de colecciones, botones de clips */
+  --font-ui: "General Sans", "Poppins", system-ui, sans-serif;
+  /* cuerpo de secciones GemPages */
+  --font-body: "Poppins", system-ui, sans-serif;
+  /* tema Dawn, producto, carrito */
+  --font-heading-theme: "Assistant", system-ui, sans-serif;
+  /* H1 de páginas Dawn, anuncios */
+  --font-stamp: "TeX Gyre Bonum", "ITC Bookman", "Bookman Old Style", "URW Bookman", Georgia, serif;
+  /* vista previa del sello */
+
+  /* ---------- Tipografía: escala (escritorio) ---------- */
+  /* H1 hero home: Alike 700 */
+  --type-h1-size: 63px;
+  --type-h1-lh: 1.1;
+  --type-h1-weight: 700;
+  /* H1 hero colecciones: Bayon 700, ls 0.78px */
+  --type-h1-collection-size: 80px;
+  --type-h1-collection-lh: 1;
+  /* H2 sección: Passion One 400 (rango visto 40–80px, más común 56px) */
+  --type-h2-size: 56px;
+  --type-h2-lh: 1.3;
+  --type-h2-weight: 400;
+  --type-h2-xl-size: 80px;
+  /* "Heirlooms…", "Make Gifting…" (span interno a 52–69px) */
+  /* H3 / título de tarjeta: General Sans 700 */
+  --type-h3-size: 28px;
+  --type-h3-lh: 1.5;
+  --type-h3-weight: 700;
+  /* Título de producto (PDP): Poppins 700, ls 0.78px */
+  --type-product-title-size: 24px;
+  --type-product-title-lh: 1.3;
+  /* Cuerpo: General Sans 400, ls 0.6px */
+  --type-body-size: 16px;
+  --type-body-lh: 1.8;
+  --type-body-ls: 0.6px;
+  --type-body-lead-size: 20px;
+  --type-body-lead-lh: 1.5;
+  --type-body-lead-weight: 500;
+  /* Cuerpo chico */
+  --type-small-size: 13px;
+  --type-small-lh: 1.7;
+  /* Botón GemPages: Passion One 400 (contenedor 38px, texto 30px) */
+  --type-btn-size: 30px;
+  --type-btn-lh: 1.9;
+  /* Botón de compra (PDP): Poppins 700 */
+  --type-btn-atc-size: 18px;
+  /* Navegación: Poppins 400, ls 0.6px, color al 75% */
+  --type-nav-size: 14px;
+  --type-nav-lh: 1.3;
+  --type-nav-ls: 0.6px;
+  /* Precio */
+  --type-price-size: 18px;
+  --type-price-weight: 700;
+  --type-price-compare-size: 18px;
+  --type-price-compare-weight: 400;
+  /* Etiquetas (badges Kaching) */
+  --type-label-size: 12px;
+  --type-label-lh: 1.4;
+  /* Anuncios: Assistant 700 */
+  --type-announcement-size: 22px;
+  /* Texto de la vista previa del sello (texto curvo) [tamaño relativo No verificado] */
+  --type-stamp-size: 7.5%;
+
+  /* ---------- Tipografía: escala (móvil ≤ 749px) ---------- */
+  --type-h1-size-m: 35px;
+  --type-h1-lh-m: 1.2;
+  --type-h1-collection-size-m: 45px;
+  --type-h2-size-m: 50px;
+  /* Passion One sigue grande en móvil */
+  --type-h3-size-m: 22px;
+  --type-product-title-size-m: 20px;
+  --type-body-size-m: 14px;
+  --type-body-lh-m: 1.8;
+  --type-body-lead-size-m: 16px;
+  --type-btn-size-m: 20px;
+  /* CTA hero móvil (Alike 700 20) */
+  --type-btn-atc-size-m: 24px;
+  --type-nav-size-m: 18px;
+  /* menú lateral */
+  --type-announcement-size-m: 17px;
+
+  /* ---------- Espaciado (escala GemPages) ---------- */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-80: 80px;
+  --space-112: 112px;
+  --space-section-y: 80px;
+  /* [No verificado: aproximación por alturas de secciones] */
+  --space-section-y-m: 48px;
+  /* [No verificado] */
+  --gutter-mobile: 15px;
+  /* medido: contenido de 360 px en viewport de 390 */
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;
+  /* --page-width 120rem y --g-ct-w */
+  --container-pad: 16px;
+  --header-pad-x: 50px;
+  --header-height: 155px;
+  --header-height-m: 110px;
+  --announcement-height: 46px;
+  --pdp-col-gap: 32px;
+  /* galería 584 + columna 584 */
+  --grid-gap-desktop: 8px;
+  /* Dawn */
+  --grid-gap-mobile: 4px;
+  --bp-sm: 750px;
+  /* Dawn */
+  --bp-md: 990px;
+  /* Dawn: header pasa a menú lateral por debajo */
+  --bp-gem-mobile: 767px;
+  /* GemPages */
+  --bp-gem-tablet: 1024px;
+  /* GemPages */
+
+  /* ---------- Bordes, radios, sombras ---------- */
+  --radius-0: 0px;
+  /* botón agregar al carrito, inputs, media, Checkout */
+  --radius-sm: 3px;
+  --radius-btn: 6px;
+  /* botones GemPages y pop-ups */
+  --radius-bundle: 8px;
+  /* tarjetas Kaching y upsells del carrito */
+  --radius-drawer: 15px;
+  /* tarjeta flotante del carrito */
+  --radius-lg: 16px;
+  --radius-pill: 40px;
+  /* variant pills Dawn */
+  --radius-round: 999px;
+  --border-input: 0.8px solid var(--twp-border-input);
+  --border-hairline: 1px solid rgba(18, 18, 18, 0.1);
+  --shadow-bundle-active: inset 0 0 0 2px var(--twp-green-700);
+  --shadow-bundle-hover: inset 0 0 0 2px rgba(0, 0, 0, 0.3);
+  --shadow-review-card: 0 0 3px rgba(0, 0, 0, 0.2);
+  --shadow-input-focus: 0 0 0 1px #374151, 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  /* ---------- Íconos ---------- */
+  --icon-stroke: 1px;
+  /* íconos Dawn (cuenta, carrito, búsqueda) */
+  --icon-size-header: 44px;
+  /* área clickeable */
+
+  /* ---------- Movimiento (Dawn) ---------- */
+  --duration-short: 0.1s;
+  --duration-default: 0.2s;
+  --duration-medium: 0.3s;
+  --duration-long: 0.5s;
+  --duration-extra-long: 0.6s;
+  --ease-out-slow: cubic-bezier(0, 0, 0.3, 1);
+  --ease-btn: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 749px) {
+  :root {
+    --type-h1-size: var(--type-h1-size-m);
+    --type-h1-lh: var(--type-h1-lh-m);
+    --type-h1-collection-size: var(--type-h1-collection-size-m);
+    --type-h2-size: var(--type-h2-size-m);
+    --type-h3-size: var(--type-h3-size-m);
+    --type-product-title-size: var(--type-product-title-size-m);
+    --type-body-size: var(--type-body-size-m);
+    --type-body-lead-size: var(--type-body-lead-size-m);
+    --type-btn-size: var(--type-btn-size-m);
+    --type-btn-atc-size: var(--type-btn-atc-size-m);
+    --type-nav-size: var(--type-nav-size-m);
+    --type-announcement-size: var(--type-announcement-size-m);
+    --space-section-y: var(--space-section-y-m);
+    --container-pad: var(--gutter-mobile);
+  }
+}
